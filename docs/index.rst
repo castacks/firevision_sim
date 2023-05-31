@@ -10,8 +10,9 @@ Basics
 .. toctree::
    :maxdepth: 2
 
-   purpose.rst
+   home.rst
    dependencies.rst
-   usage.rst
+   getting_started.rst
+   customizing.rst
    credit.rst
-   exercises.rst
+
