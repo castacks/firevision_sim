@@ -12,7 +12,7 @@ Download
     - Inside the file, look at the top and click on Build and Build Solution. If no compiling errors occur, you are ready to open the FIReVision uproject. It can also be opened inside of the Unreal Engine application.
     - Once in the project, go to the top left and click on File > Open Level and select FIReVision (Level).
 
-- Controls: Kayla McFarlane
+- Controls:
 - Run the “objectDetection_kbcontrol.py” script
 
     - Movement: 
