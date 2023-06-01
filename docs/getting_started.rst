@@ -136,5 +136,6 @@ Sensors
 When running AirSim in the FIReVision environment, three cameras should be displayed at the bottom of the screen. The leftmost camera shows RGB image, the middle camera shows semantic segmentation, and the rightmost camera shows thermal image. The code above should ensure that the cameras are set up in this fashion. However, if you don’t want a certain camera or prefer something else, please look at AirSim’s documentation on the Image APIs.
 
 .. image:: images/sensors.PNG
-  :width: 400
+  :width: 800
+  :height: 600
 
