@@ -34,101 +34,99 @@ Setup
 -----
 
 Go into your system’s “Documents > AirSim > Settings” and copy paste the code below into that file.
+  .. code-block:: JSON
 
-```
-{
-  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/main/docs/settings.md",
-  "SettingsVersion": 1.2,
-  "SimMode": "Multirotor",
-  "ViewMode": "SpringArmChase",
-  "ClockSpeed": 1.0,
-  "SegmentationSettings": {
-    "InitMethod": "",
-    "MeshNamingMethod": "",
-    "OverrideExisting": false
-  },
-  "Vehicles": {
-    "drone_1": {
-      "VehicleType": "SimpleFlight",
-      "DefaultVehicleState": "Armed",
-      "EnableCollisionPassthrogh": false,
-      "EnableCollisions": true,
-      "AllowAPIAlways": true,
-      "RC": {
-        "RemoteControlID": 0,
-        "AllowAPIWhenDisconnected": false
+    {
+      "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/main/docs/settings.md",
+      "SettingsVersion": 1.2,
+      "SimMode": "Multirotor",
+      "ViewMode": "SpringArmChase",
+      "ClockSpeed": 1.0,
+      "SegmentationSettings": {
+        "InitMethod": "",
+        "MeshNamingMethod": "",
+        "OverrideExisting": false
       },
-      "Sensors": {
-        "Imu" : {
-          "SensorType": 2,
-          "Enabled": true
-        }
-      },
-      "Cameras": {
-        "front_center_custom": {
-          "CaptureSettings": [
-            {
-              "PublishToRos": 1,
-              "ImageType": 0,
-              "Width": 640,
-              "Height": 480,
-              "FOV_Degrees": 27,
-              "DepthOfFieldFstop": 2.8,
-              "DepthOfFieldFocalDistance": 200.0, 
-              "DepthOfFieldFocalRegion": 200.0,
-              "TargetGamma": 1.5
+      "Vehicles": {
+        "drone_1": {
+          "VehicleType": "SimpleFlight",
+          "DefaultVehicleState": "Armed",
+          "EnableCollisionPassthrogh": false,
+          "EnableCollisions": true,
+          "AllowAPIAlways": true,
+          "RC": {
+            "RemoteControlID": 0,
+            "AllowAPIWhenDisconnected": false
+          },
+          "Sensors": {
+            "Imu" : {
+              "SensorType": 2,
+              "Enabled": true
             }
-          ],
-          "X": 0.50, "Y": 0, "Z": 0.10,
+          },
+          "Cameras": {
+            "front_center_custom": {
+              "CaptureSettings": [
+                {
+                  "PublishToRos": 1,
+                  "ImageType": 0,
+                  "Width": 640,
+                  "Height": 480,
+                  "FOV_Degrees": 27,
+                  "DepthOfFieldFstop": 2.8,
+                  "DepthOfFieldFocalDistance": 200.0, 
+                  "DepthOfFieldFocalRegion": 200.0,
+                  "TargetGamma": 1.5
+                }
+              ],
+              "X": 0.50, "Y": 0, "Z": 0.10,
+              "Pitch": 0, "Roll": 0, "Yaw": 0
+            },
+            "bottom_forward_thermal": {
+              "CaptureSettings": [
+                {
+                  "PublishToRos": 1,
+                  "ImageType": 10,
+                  "Width": 640,
+                  "Height": 512,
+                  "FOV_Degrees": 95,
+                  "DepthOfFieldFstop": 2.8,
+                  "DepthOfFieldFocalDistance": 200.0, 
+                  "DepthOfFieldFocalRegion": 200.0,
+                  "TargetGamma": 1.5
+                }
+              ],
+              "X": 0.0, "Y": 0, "Z": 0.0,
+              "Pitch": -45, "Roll": 0, "Yaw": 0
+            },
+            "bottom_forward_infrared": {
+              "CaptureSettings": [
+                {
+                  "PublishToRos": 1,
+                  "ImageType": 0,
+                  "Width": 640,
+                  "Height": 480,
+                  "FOV_Degrees": 95,
+                  "DepthOfFieldFstop": 2.8,
+                  "DepthOfFieldFocalDistance": 200.0, 
+                  "DepthOfFieldFocalRegion": 200.0,
+                  "TargetGamma": 1.5
+                }
+              ],
+              "X": 0.0, "Y": 0, "Z": 0.0,
+              "Pitch": -45, "Roll": 0, "Yaw": 0
+            }
+          },
+          "X": 2, "Y": 0, "Z": 0,
           "Pitch": 0, "Roll": 0, "Yaw": 0
-        },
-        "bottom_forward_thermal": {
-          "CaptureSettings": [
-            {
-              "PublishToRos": 1,
-              "ImageType": 10,
-              "Width": 640,
-              "Height": 512,
-              "FOV_Degrees": 95,
-              "DepthOfFieldFstop": 2.8,
-              "DepthOfFieldFocalDistance": 200.0, 
-              "DepthOfFieldFocalRegion": 200.0,
-              "TargetGamma": 1.5
-            }
-          ],
-          "X": 0.0, "Y": 0, "Z": 0.0,
-          "Pitch": -45, "Roll": 0, "Yaw": 0
-        },
-        "bottom_forward_infrared": {
-          "CaptureSettings": [
-            {
-              "PublishToRos": 1,
-              "ImageType": 0,
-              "Width": 640,
-              "Height": 480,
-              "FOV_Degrees": 95,
-              "DepthOfFieldFstop": 2.8,
-              "DepthOfFieldFocalDistance": 200.0, 
-              "DepthOfFieldFocalRegion": 200.0,
-              "TargetGamma": 1.5
-            }
-          ],
-          "X": 0.0, "Y": 0, "Z": 0.0,
-          "Pitch": -45, "Roll": 0, "Yaw": 0
         }
       },
-      "X": 2, "Y": 0, "Z": 0,
-      "Pitch": 0, "Roll": 0, "Yaw": 0
+      "SubWindows": [
+        {"WindowID": 0, "ImageType": 0, "CameraName": "front_center_custom", "Visible": true},
+        {"WindowID": 1, "ImageType": 5, "CameraName": "bottom_forward_thermal", "Visible": true},
+        {"WindowID": 2, "ImageType": 10, "CameraName": "bottom_forward_thermal", "Visible": true}
+      ]
     }
-  },
-  "SubWindows": [
-    {"WindowID": 0, "ImageType": 0, "CameraName": "front_center_custom", "Visible": true},
-    {"WindowID": 1, "ImageType": 5, "CameraName": "bottom_forward_thermal", "Visible": true},
-    {"WindowID": 2, "ImageType": 10, "CameraName": "bottom_forward_thermal", "Visible": true}
-  ]
-}
-
-```
 
 Sensors
 -------
