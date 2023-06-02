@@ -5,7 +5,7 @@ Getting Started
 
 Download
 --------
-- To start off, please download the `FIReVision executable <https://drive.google.com/file/d/1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8/view?usp=sharing>`_ to use our simulator. When you run the FIReVision executable, the wildfire environment will start out in AirSim mode. Now, we'll need to learn how to move around as the drone. 
+- To start off, please download the `FIReVision executable <https://drive.google.com/file/d/1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8/view?usp=sharing>`_ to use our simulator. When you run the FIReVision executable, the wildfire environment will start out in AirSim mode.
 .. - If our release build doesn’t come with AirSim, make sure there’s a copy of it in your unreal engine project folder. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_. Note: if the project is opened without AirSim, an error may occur but you can still open it without AirSim.
 .. - Once you’ve downloaded the build and compiled it
 
@@ -13,9 +13,10 @@ Download
     - Inside the file, look at the top and click on Build and Build Solution. If no compiling errors occur, you are ready to open the FIReVision uproject. It can also be opened inside of the Unreal Engine application.
 .. - Once in the project, go to the top left and click on File > Open Level and select FIReVision (Level).
 
-- Drone Controls:
+Drone Controls
+-------
 - Before we can start moving in AirSim mode, we must first run the ``objectDetection_kbcontrol.py`` script. This will allow us to detect objects as well as control the drone. 
-- Familiarize yourself with the following table to fly the drone:
+- Finally, refer to the following table to control the drone:
 
 .. list-table:: Movements
    :widths: 25 25
@@ -39,15 +40,14 @@ Download
      - Up
    * - Z
      - Down
-..
-    - Camera toggling:
-
-        - A new window will open up, showing the object detection of people and vehicles. 
+.. A video showing the drone flying would be nice 
+- Camera toggling:
+    - A new window will open up, showing the object detection of people and vehicles. 
 
 Setup
 -----
-
 Go into your system’s “Documents > AirSim > Settings” and copy paste the code below into that file.
+
   .. code-block:: JSON
 
     {
