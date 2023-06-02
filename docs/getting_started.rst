@@ -5,7 +5,7 @@ Getting Started
 
 Download
 --------
-- If our release build doesn’t come with AirSim, make sure there’s a copy of it in your unreal engine project folder. Note: an error may occur if the project is opened without AirSim. It should still allow the project to be opened without it, though 
+- If our release build doesn’t come with AirSim, make sure there’s a copy of it in your unreal engine project folder. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_. Note: if the project is opened without AirSim, an error may occur but you can still open it without AirSim.
 - Once you’ve downloaded the build and compiled it
 
     - To build the unreal engine project, locate the FIReVision folder and find file ending in .sln (e.g., FIReVision.sln). 
