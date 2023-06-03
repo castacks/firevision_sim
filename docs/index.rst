@@ -14,6 +14,6 @@ Basics
    dependencies.rst
    getting_started.rst
    customizing.rst
-   development.rst
+   .. development.rst
    credit.rst
 
