@@ -15,7 +15,7 @@ Then, when you're in the project via the editor, go to the top left and click on
 
 
 Implementation
-====
+----
 Post Process Thermal Imaging Material
 -----
 To be filled out...
