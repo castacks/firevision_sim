@@ -7,11 +7,6 @@ Download
 --------
 To start off, please download the `FIReVision executable <https://drive.google.com/file/d/1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8/view?usp=sharing>`_ to use our simulator. When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
 
-.. - If our release build doesn’t come with AirSim, make sure there’s a copy of it in your unreal engine project folder. 
-.. - Once you’ve downloaded the build and compiled it
-    - To build the unreal engine project, locate the FIReVision folder and find file ending in .sln (e.g., FIReVision.sln). 
-    - Inside the file, look at the top and click on Build and Build Solution. If no compiling errors occur, you are ready to open the FIReVision uproject. It can also be opened inside of the Unreal Engine application.
-.. - Once in the project, go to the top left and click on File > Open Level and select FIReVision (Level).
 
 Drone Controls
 -------
