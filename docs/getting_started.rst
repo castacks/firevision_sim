@@ -5,18 +5,17 @@ Getting Started
 
 Download
 --------
-- To start off, please download the `FIReVision executable <https://drive.google.com/file/d/1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8/view?usp=sharing>`_ to use our simulator. When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary.
-.. - If our release build doesn’t come with AirSim, make sure there’s a copy of it in your unreal engine project folder. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_. Note: if the project is opened without AirSim, an error may occur but you can still open it without AirSim.
-.. - Once you’ve downloaded the build and compiled it
+To start off, please download the `FIReVision executable <https://drive.google.com/file/d/1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8/view?usp=sharing>`_ to use our simulator. When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
 
+.. - If our release build doesn’t come with AirSim, make sure there’s a copy of it in your unreal engine project folder. 
+.. - Once you’ve downloaded the build and compiled it
     - To build the unreal engine project, locate the FIReVision folder and find file ending in .sln (e.g., FIReVision.sln). 
     - Inside the file, look at the top and click on Build and Build Solution. If no compiling errors occur, you are ready to open the FIReVision uproject. It can also be opened inside of the Unreal Engine application.
 .. - Once in the project, go to the top left and click on File > Open Level and select FIReVision (Level).
 
 Drone Controls
 -------
-- Before we can start moving in AirSim mode, we must first run the ``objectDetection_kbcontrol.py`` script. This will allow us to detect objects as well as control the drone. 
-- Finally, refer to the following table to control the drone:
+Before we can start moving in AirSim mode, we must first run ``objectDetection_kbcontrol.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
 
 .. list-table:: Movements
    :widths: 25 25
@@ -40,10 +39,14 @@ Drone Controls
      - Up
    * - Z
      - Down
-.. A video showing the drone flying would be nice 
-- Camera toggling:
-    - A new window will open up, showing the object detection of people and vehicles. 
+.. A video showing the drone flying would be nice  
 
+Objection Detection
+-----
+When running ``objectDetection_kbcontrol.py`` you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It boxes the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires).
+.. image:: images/objection_detection.PNG
+  :width: 800
+  :height: 400
 Setup
 -----
 Go into your system’s “Documents > AirSim > Settings” and copy paste the code below into that file.
