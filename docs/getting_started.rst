@@ -38,7 +38,11 @@ Before we can start moving in AirSim mode, we must first run ``objectDetection_k
 
 Objection Detection
 -----
-When running ``objectDetection_kbcontrol.py`` you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It boxes the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires).
+When running ``objectDetection_kbcontrol.py`` you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It boxes the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
+
+.. image:: images/obj_det.png
+  :width: 800
+  :height: 400
 
 Setup
 -----
@@ -143,7 +147,7 @@ Sensors
 
 When running AirSim in the FIReVision environment, three cameras should be displayed at the bottom of the screen. The leftmost camera shows RGB image, the middle camera shows semantic segmentation, and the rightmost camera shows thermal image. The code above should ensure that the cameras are set up in this fashion. However, if you don’t want a certain camera or prefer something else, please look at AirSim’s documentation on the `Images API <https://microsoft.github.io/AirSim/image_apis/>`_.
 
-.. image:: images/sensors.PNG
+.. image:: images/sensors.png
   :width: 800
-  :height: 400
+  :height: 300
 
