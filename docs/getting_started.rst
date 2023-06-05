@@ -40,9 +40,9 @@ Objection Detection
 -----
 When running ``objectDetection_kbcontrol.py`` you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It boxes the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
 
-.. image:: videos/FIReVision.gif
-  :width: 800
-  :height: 400
+.. image:: images/obj_det.png
+    :alt: Video of Object Detection in FIReVision
+    :target: https://youtu.be/sHROI58mXSM
 
 Setup
 -----
