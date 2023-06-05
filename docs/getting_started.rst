@@ -149,5 +149,5 @@ When running AirSim in the FIReVision environment, three cameras should be displ
 
 .. image:: images/sensors.png
   :width: 800
-  :height: 300
+  :height: 200
 
