@@ -1,0 +1,27 @@
+_build/
+*.zip
+
+### UNREAL ENGINE ###
+
+Binaries
+Build
+DerivedDataCache
+Intermediate
+Releases
+Saved
+
+# Windows
+.vs/
+*.sln
+*.sdf
+*.opensdf
+*.suo
+
+# Linux
+*.pro
+*.kdev4
+CMakeLists.txt
+Makefile
+
+# Mac
+*.xcodeproj
