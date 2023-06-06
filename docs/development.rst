@@ -14,7 +14,28 @@ Once the project is downloaded, remember to build the project. The following are
     - Inside the file, look at the top and click on Build and Build Solution. If no compiling errors occur, you are ready to open the FIReVision uproject. It can also be opened inside of the Unreal Engine application.
 Then, when you're in the project via the editor, go to the top left and click on File > Open Level and select FIReVision (Level).
 
+Debugging and Sanity Checks
+---------------------
 
+- Ensure the following are configured properly (likely not necessary)
+
+    - 1 - AirSim Gamemode is set Properly
+
+        - In the top right corner of Unreal Engine should be Settings, click on it and select World Settings. It should prompt a new panel for World Settings and search for GameMode Override. By default it should be set to None. Change it to AirSimGameMode.
+
+    - 2 - Material is properly applied to AirSim Camera
+
+        - At the bottom of the Unreal Engine Editor, click “Content Browser”.
+        - Click “Settings” and ensure “Show Plugin Content” is enabled.
+        - In the Content Drawer, go into “Plugins > AirSim Content > Blueprints”
+        - Open BP_PIP Camera(not the flying pawn drone)
+        - On the left side there should be a Components section. In the search bar search for FireVisionThermalCaptureComponent. If it’s not available, add a Scene Capture Component 2D, rename it and proceed with the documentation.
+        - On the right side there should be a Details. In the search bar look up ‘material,’ you should be prompted with Post Process Materials. Add an element, choose Asset Reference and apply our PPThermal_Vision_2 material.
+
+    - 3 - Custom Depth Enabled 
+
+        - Go into Project Settings > Engine - Rendering and find Custom Depth-Stencil Pass. Set this to Enable with Stencil to use custom depth and stencil values
+        
 Implementation
 ----
 Post Process Thermal Imaging Material
@@ -42,5 +63,6 @@ To be filled out...
 
 Adding more Crew and Fire 
 -----
+To be filled out...
 
 
