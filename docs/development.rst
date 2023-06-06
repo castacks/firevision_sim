@@ -57,7 +57,11 @@ Post Process Thermal Imaging Material
         
 Vehicle and Crew AI
 -----
-To be filled out...
+- To represent firefighters and vehicles, we have implemented Crew AI that move within the environment as well as spline paths which allow vehicles to move around.
+- If you would like to add more AI Crew or Vehicles, you would need to...
+
+    - Navigate into (fill out path) and drag the AI into the bounded environment
+    (Complete instructions)
 
 Adding more Crew and Fire 
 -----
