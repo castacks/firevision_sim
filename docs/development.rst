@@ -65,5 +65,10 @@ Vehicle and Crew AI
 
 Adding more Crew and Fire 
 -----
-The content folder of the project should contain folders MWBurnedDeadForest/Foliage, MWBurnedDeadForest/Particles, and Forest_Fire_Fighter-_-_Don_3D_Model_CGTrader. MWBurnedDeadForest/Foliage is where all the foliage (e.g., trees) items are located. MWBurnedDeadForest/Particles is where the different fires (e.g., small, medium, and large) are stored. Finally, Forest_Fire_Fighter-_-_Don_3D_Model_CGTrader is where the crew is stored. To add crew and fire, it's simple as dragging and dropping into the environment. Foliage items, on the other hand, are a little different. In the top left corner should be "Select Mode". Switch this "Foliage". In MWBurnedDeadForest/Foliage, drag and drop the desired foliage items. Then, select all items and switch the scaling to free. We change the scale z by setting max to 0.55 and min to 0.39 (subcanopy level trees). Finally, select "Paint" and hold the left mouse button over the region to place foliage.
+The content folder of the project should contain folders MWBurnedDeadForest/Foliage, MWBurnedDeadForest/Particles, and Forest_Fire_Fighter-_-_Don_3D_Model_CGTrader. 
+
+    - MWBurnedDeadForest/Foliage is where all the foliage (e.g., trees) items are located. 
+    - MWBurnedDeadForest/Particles is where the different fires (e.g., small, medium, and large) are stored. 
+    - Finally, Forest_Fire_Fighter-_-_Don_3D_Model_CGTrader is where the crew is stored. 
+    To add crew and fire, it's simple as dragging and dropping into the environment. Foliage items, on the other hand, are a little different. In the top left corner should be "Select Mode". Switch this "Foliage". In MWBurnedDeadForest/Foliage, drag and drop the desired foliage items. Then, select all items and switch the scaling to free. We change the scale z by setting max to 0.55 and min to 0.39 (subcanopy level trees). Finally, select "Paint" and hold the left mouse button over the region to place foliage.
 
