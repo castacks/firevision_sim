@@ -40,8 +40,6 @@ Implementation
 ----
 Post Process Thermal Imaging Material
 -----
-Thermal Imaging
----------------------
 - To detect objects as hot and cold, we used a post processing material. Currently, there are designated stencil values for each object in the world.
 - However, if you would like to add objects into the environment and have those be detected as well, you would need to…
 
