@@ -13,7 +13,7 @@ Basics
    home.rst
    dependencies.rst
    getting_started.rst
-   customizing.rst
-   .. development.rst
+   .. customizing.rst
+   development.rst
    credit.rst
 
