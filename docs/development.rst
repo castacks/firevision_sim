@@ -19,13 +19,28 @@ Implementation
 ----
 Post Process Thermal Imaging Material
 -----
-To be filled out...
+Thermal Imaging
+---------------------
+- To detect objects as hot and cold, we used a post processing material. Currently, there are designated stencil values for each object in the world.
+- However, if you would like to add objects into the environment and have those be detected as well, you would need to…
 
+    - Enable Custom Depth on the object, which can be done by navigating to the details of the object, searching for Custom Depth and checking off the box. 
+    - Then, near Custom Depth should be Stencil Value. Note: each object is allowed a stencil value from 0-255 (with some extra control by looking at specific bits). 
+
+        - Currently, our post processing material only detects fire, trees, humans, vehicles, and the ground. 
+
+    - Therefore, to also detect your object, you would need to alter the post process material, specifically the section for masking.  
+
+        - Add two Constant nodes: one for the stencil and the other for the corresponding heat value. 
+        - Next, add an if node and connect the stencil constant to B and heat value to A == B. Locate the Stencil Mask block and connect the output of the Mask (R) node to A in the if node. 
+        - Connect Constant nodes with values of 0 to A > B and A < B.
+        - Finally, take the output of the if node and plug it into a sum node and the other input should be the latest output of a sum node. Note: there’s a pattern in the structure so it should be easy to match it 
+        
 Vehicle and Crew AI
 -----
 To be filled out...
 
 Adding more Crew and Fire 
 -----
-To be filled out...
+
 
