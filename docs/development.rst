@@ -4,7 +4,8 @@ For those who like to know more about our simulation or contribute to it, here w
 
 Set up the Project
 ----
-    - If our release build doesn’t come with AirSim, make sure there’s a copy of it in your Unreal Engine project folder. To build AirSim, follow the steps `here <https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html>`_.
+The FIReVision uproject can be found on our GitHub `repository <https://github.com/castacks/firevision_sim>`_. The simulator uses AirSim, which is also on the repository. However, in case you need to download and build AirSim, follow the steps `here <https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html>`_.
+
 .. note:: When opening the project through Unreal Engine 5 without AirSim, an error may occur but you can still open it without AirSim.
 
 Once the project is downloaded, remember to build the project. The following are the instructions to build the project:
