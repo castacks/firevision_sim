@@ -19,6 +19,6 @@ In addition, beyond fire and vegetation, we also add dynamic firefighting crew a
 This unique combination of realistic fire and crew movement, visual rendering, and drone physics lets us deliver a rich playground for robotics research. 
 We imagine our proposed environment to be useful for robotics tasks such as simultaneous localization and mapping (SLAM) and informative path planning, 
 for applications including search and rescue, situational overwatch, and even fire extinguishing.
-Our simulator will is open source and we encourage further contribution from the community.
+Our simulator is open source and we encourage further contribution from the community.
 
 Head to our Getting Started page to learn how to install and run the simulator.
