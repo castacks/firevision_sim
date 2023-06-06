@@ -61,12 +61,12 @@ Vehicle and Crew AI
 
 - If you would like to add more vehicles, you would need to...
 
-    - Navigate into (folder path) and drag the desired vehicle into the environment. This will add the vehicle into the environment but it will be stationary.
+    - Navigate into Content > AssetsvilleTown > Meshes > Vehicles and drag the desired vehicle into the environment. This will add the vehicle into the environment but it will be stationary.
     
-        - In order to get the vehicle to follow a path, you must navigate to (folder ) and drag the SplinePathBP into the environment.
+        - In order to get the vehicle to follow a path, you must navigate to Content > Splines and drag the SplinePathBP into the environment.
         - Next, select a spline point and ALT + LMB drag the cursor towards the direction that you desire. 
         - Once you have finished placing all the segments in the environment, it is advised that you snap all the spline points to the floor to ensure that the vehicle will stay on the ground as it follows the path. This can be done by selecting a spline point, right click, and select "Snap to Ground".
-        - Finally, navigate into () and drag () and set it ontop of the first spline point. Once the environment is live, the vehicle will move and adhere to your new spline path.
+        - Finally, navigate into Content > Splines and drag VehicleBP and set it ontop of the first spline point. Once the environment is live, the vehicle will move and adhere to your new spline path.
         - If you would like to change the vehicle appearance, you may do so by adding a different mesh ontop of the existing blueprint inside the Viewport.
         
 
