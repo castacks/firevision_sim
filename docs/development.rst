@@ -40,7 +40,7 @@ Implementation
 ----
 Post Process Thermal Imaging Material
 -----
-- To detect objects as hot and cold, we used a post processing material. Currently, there are designated stencil values for each object in the world.
+- To detect objects as hot and cold, we used a post processing material with a gray-scale gradient. Currently, there are designated stencil values for each object in the world.
 - However, if you would like to add objects into the environment and have those be detected as well, you would need to…
 
     - Enable Custom Depth on the object, which can be done by navigating to the details of the object, searching for Custom Depth and checking off the box. 
@@ -61,6 +61,5 @@ To be filled out...
 
 Adding more Crew and Fire 
 -----
-To be filled out...
-
+The content folder of the project should contain folders x,y, and z. x is where all the foliage (i.e., trees) items are located. y is where the different fires (e.g., small, medium, and large) are stored. Finally, z is where the crew is stored. To add crew and fire, it's simple as dragging and dropping into the environment. Foliage items, on the other hand, are a little different. In the top left corner should be "". Switch this from "" to "Foliage mode". In x, drag and drop the desired foliage items. Then, select all items and switch the scaling to free. We change the scale z by setting max to 0.55 and min to 0.39 (subcanopy level trees). Finally, select "Paint" and hold the left mouse button over the region to place foliage.
 
