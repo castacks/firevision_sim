@@ -54,7 +54,8 @@ Post Process Thermal Imaging Material
         - Next, add an if node and connect the stencil constant to B and heat value to A == B. Locate the Stencil Mask block and connect the output of the Mask (R) node to A in the if node. 
         - Connect Constant nodes with values of 0 to A > B and A < B.
         - Finally, take the output of the if node and plug it into a sum node and the other input should be the latest output of a sum node. Note: there’s a pattern in the structure so it should be easy to match it 
-        
+- To replace the AirSim's thermal imaging material with our own, please follow the tutorial below. 
+
 Vehicle and Crew AI
 -----
 - To represent firefighters and vehicles, we have implemented Crew AI that move within the environment as well as spline paths which allow vehicles to move around.
