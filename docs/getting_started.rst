@@ -42,7 +42,7 @@ Before we can start moving in AirSim mode, we must first run ``objectDetection_k
 
 Objection Detection
 -----
-When running ``objectDetection_kbcontrol.py`` you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It boxes the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
+When running ``objectDetection_kbcontrol.py``, you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It surrounds a blue box around the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
 
 .. image:: images/FIReVision.gif
   :width: 800
@@ -50,7 +50,7 @@ When running ``objectDetection_kbcontrol.py`` you may have noticed a small windo
 
 Setup
 -----
-Go into your system’s “Documents > AirSim > Settings” and copy paste the code below into that file.
+Go into your system’s “Documents > AirSim > Settings” and paste the code below into that file.
 
   .. code-block:: JSON
 
