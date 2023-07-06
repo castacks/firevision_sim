@@ -15,5 +15,6 @@ Basics
    getting_started.rst
    .. customizing.rst
    development.rst
+   contributing.rst
    credit.rst
 
