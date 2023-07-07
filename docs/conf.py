@@ -19,6 +19,7 @@
 #
 import os
 import sys
+from sphinxcontrib.youtube import __version__
 sys.path.insert(0, os.path.abspath('../source'))
 
 
