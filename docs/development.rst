@@ -55,6 +55,7 @@ Post Process Thermal Imaging Material
         - Connect Constant nodes with values of 0 to A > B and A < B.
         - Finally, take the output of the if node and plug it into a sum node and the other input should be the latest output of a sum node. Note: there’s a pattern in the structure so it should be easy to match it 
 - To replace the AirSim's thermal imaging material with our own, please follow the tutorial below. 
+.. youtube::dGOkNIL12O0
 
 Vehicle and Crew AI
 -----
