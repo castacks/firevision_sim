@@ -21,7 +21,7 @@ import os
 import sys
 import subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", "sphinxcontrib-youtube"])
-from sphinxcontrib.youtube import __version__
+import sphinxcontrib.youtube
 sys.path.insert(0, os.path.abspath('../source'))
 
 
