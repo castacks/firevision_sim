@@ -69,7 +69,7 @@ Vehicle and Crew AI
         - Next, select a spline point and ALT + LMB drag the cursor towards the direction that you desire. 
         - Once you have finished placing all the segments in the environment, it is advised that you snap all the spline points to the floor to ensure that the vehicle will stay on the ground as it follows the path. This can be done by selecting a spline point, right click, and select "Snap to Ground".
         - Finally, navigate into Content > Splines and drag VehicleBP and set it ontop of the first spline point. Once the environment is live, the vehicle will move and adhere to your new spline path.
-        - If you would like to change the vehicle appearance, you may do so by adding a different mesh ontop of the existing blueprint inside the Viewport.
+        - If you would like to change the vehicle appearance, you may do so by adding a different mesh ontop of the existing blueprint inside the Viewport. 
         
 
 Adding more Crew and Fire 
