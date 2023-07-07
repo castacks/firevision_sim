@@ -54,10 +54,13 @@ Post Process Thermal Imaging Material
         - Next, add an if node and connect the stencil constant to B and heat value to A == B. Locate the Stencil Mask block and connect the output of the Mask (R) node to A in the if node. 
         - Connect Constant nodes with values of 0 to A > B and A < B.
         - Finally, take the output of the if node and plug it into a sum node and the other input should be the latest output of a sum node. Note: there’s a pattern in the structure so it should be easy to match it 
+.. youtube:: zWS5htlx6kI
+  :width: 600
+  :height: 400
 - To replace the AirSim's thermal imaging material with our own, please follow the tutorial below. 
 .. youtube:: dGOkNIL12O0
-  :width: 800
-  :height: 600
+  :width: 600
+  :height: 400
 
 Vehicle and Crew AI
 -----
@@ -83,6 +86,6 @@ The content folder of the project should contain folders MWBurnedDeadForest/Foli
     - Finally, Forest_Fire_Fighter-_-_Don_3D_Model_CGTrader is where the crew is stored. 
     To add crew and fire, it's simple as dragging and dropping into the environment. Foliage items, on the other hand, are a little different. In the top left corner should be "Select Mode". Switch this "Foliage". In MWBurnedDeadForest/Foliage, drag and drop the desired foliage items. Then, select all items and switch the scaling to free. We change the scale z by setting max to 0.55 and min to 0.39 (subcanopy level trees). Finally, select "Paint" and hold the left mouse button over the region to place foliage.
 .. youtube:: Ha-hDImNopU
-  :width: 800
-  :height: 600
+  :width: 600
+  :height: 400
 
