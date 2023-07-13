@@ -8,46 +8,9 @@ Download
 - To start off, please download the `FIReVision executable <https://drive.google.com/uc?id=1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8&export=download>`_ to use our simulator. 
 
    - Once you have downloaded the ZIP file, extract all of the included files and then select the "FireViision.exe" file to launch the simulation.
-   - Then select "no" to use the quadrocoptor
+   - Then select "no" to use the quadrocopter
  
 - When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
-
-
-Drone Controls
--------
-Before we can start moving in AirSim mode, we must first run ``objectDetection_kbcontrol.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
-
-.. list-table:: Movements
-   :widths: 25 25
-   :header-rows: 1
-
-   * - Key
-     - Action
-   * - W
-     - Foward
-   * - A
-     - Left
-   * - S
-     - Backward
-   * - D
-     - Foward
-   * - Q
-     - Rotate Left
-   * - E
-     - Rotate Right
-   * - X
-     - Up
-   * - Z
-     - Down
-.. A video showing the drone flying would be nice  
-
-Objection Detection
------
-When running ``objectDetection_kbcontrol.py``, you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It surrounds a blue box around the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
-
-.. image:: images/FIReVision.gif
-  :width: 800
-  :height: 400
 
 Setup
 -----
@@ -146,6 +109,43 @@ Go into your system’s “Documents > AirSim > Settings” and paste the code b
         {"WindowID": 2, "ImageType": 10, "CameraName": "bottom_forward_thermal", "Visible": true}
       ]
     }
+
+Drone Controls
+-------
+Before we can start moving in AirSim mode, we must first run ``objectDetection_kbcontrol.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
+
+.. list-table:: Movements
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Key
+     - Action
+   * - W
+     - Foward
+   * - A
+     - Left
+   * - S
+     - Backward
+   * - D
+     - Foward
+   * - Q
+     - Rotate Left
+   * - E
+     - Rotate Right
+   * - X
+     - Up
+   * - Z
+     - Down
+.. A video showing the drone flying would be nice  
+
+Objection Detection
+-----
+When running ``objectDetection_kbcontrol.py``, you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It surrounds a blue box around the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
+
+.. image:: images/FIReVision.gif
+  :width: 800
+  :height: 400
+
 
 Sensors
 -------
