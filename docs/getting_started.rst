@@ -7,7 +7,8 @@ Download
 --------
 - To start off, please download the `FIReVision executable <https://drive.google.com/uc?id=1RSxQ53h_-bXE0dUa8GQ8lM2cx7LlVmB8&export=download>`_ to use our simulator. 
 
-   - Once you have downloaded the ZIP file, extract all of the included files and then select the "FireViision.exe" file to lauch the simulation.
+   - Once you have downloaded the ZIP file, extract all of the included files and then select the "FireViision.exe" file to launch the simulation.
+   - Then select "no" to use the quadrocoptor
  
 - When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
 
