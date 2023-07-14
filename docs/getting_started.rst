@@ -10,7 +10,11 @@ Download
    - Once you have downloaded the ZIP file, extract all of the included files and then select the "FireViision.exe" file to launch the simulation.
    - Then select "no" to use the quadrocopter
  
-- When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. To download the binary follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
+- When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. 
+
+- For more ease while running the project, press F11 to exit fullscreen mode. More robust navigation features will come in later versions. 
+
+- Although not required to continue, if you would like to download additional binaries to try AirSim, follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
 
 Setup
 -----
@@ -112,7 +116,8 @@ Go into your system’s “Documents > AirSim > Settings” and paste the code b
 
 Drone Controls
 -------
-Before we can start moving in AirSim mode, we must first run ``objectDetection_kbcontrol.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
+Before we can start moving in AirSim mode, we must first use either the windows key or press alt + tab to access the project folder, go into the 
+“FireVision-Detection” folder, then open and run ``objectDetection.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
 
 .. list-table:: Movements
    :widths: 25 25
@@ -140,7 +145,7 @@ Before we can start moving in AirSim mode, we must first run ``objectDetection_k
 
 Objection Detection
 -----
-When running ``objectDetection_kbcontrol.py``, you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It surrounds a blue box around the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
+When running ``objectDetection.py``, you may have noticed a small window opening. This window displays the detection of objects in the environment, specifically crew and vehicles. It surrounds a blue box around the objects and labels them according to their name in the environment. We soon hope to detect the rest of the environment (e.g., the trees and fires). The objection detection window can be found in the top right of the screen. 
 
 .. image:: images/FIReVision.gif
   :width: 800
