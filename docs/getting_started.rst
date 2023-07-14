@@ -114,7 +114,7 @@ Go into your system’s “Documents > AirSim > settings.json” and paste the c
 
 Drone Controls
 -------
-Before we can start moving in AirSim mode, make sure you have the dependencies installed as listed `here <https://castacks.github.io/firevision_sim/dependencies.html>`_. You can use either the windows key or press alt + tab to momentarily navigate out FireVision. Then, go into the project folder run the ``objectDetection.py`` script. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
+Before we can start moving in AirSim mode we need to run the script that allows us to mmove. You can use either the windows key or press alt + tab to momentarily navigate out FireVision. Once out, open up your command prompt and navigate to the project folder. From there, run ``FireVision_venv\Scripts\activate.bat``. Then, open and run the ``objectDetection.py`` script from the project folder. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
 
 .. list-table:: Movements
    :widths: 25 25
