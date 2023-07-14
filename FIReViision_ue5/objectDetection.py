@@ -107,7 +107,7 @@ def printDetections(mesh_name):
 
 while True:
 
-    client.moveByVelocityBodyFrameAsync(vx, vy, vz)
+    client.moveByVelocityBodyFrameAsync(vx, vy, vz, 12)
     time.sleep(0.1)
     
     rawImage = client.simGetImage(camera_name, image_type)
