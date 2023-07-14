@@ -16,7 +16,7 @@ Download
 
 Setup
 -----
-Go into your system’s “Documents > AirSim > Settings” and paste the code below into that file.
+Go into your system’s “Documents > AirSim > settings.json” and paste the code below into that file.
 
   .. code-block:: JSON
 
