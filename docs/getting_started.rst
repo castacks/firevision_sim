@@ -12,9 +12,7 @@ Download
  
 - When you run the FIReVision executable, the wildfire environment will start out in AirSim mode with the drone on the ground stationary. 
 
-- For more ease while running the project, press F11 to exit fullscreen mode. More robust navigation features will come in later versions. 
-
-- Although not required to continue, if you would like to download additional binaries to try AirSim, follow the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
+- For more ease while running the project, press F11 to exit fullscreen mode. Note: More navigation features will come in later versions. 
 
 Setup
 -----
@@ -116,8 +114,7 @@ Go into your system’s “Documents > AirSim > Settings” and paste the code b
 
 Drone Controls
 -------
-Before we can start moving in AirSim mode, we must first use either the windows key or press alt + tab to access the project folder, go into the 
-“FireVision-Detection” folder, then open and run ``objectDetection.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
+Before we can start moving in AirSim mode, we can use either the windows key or press alt + tab to access the project folder and run ``objectDetection.py``. This will allow us to detect objects as well as control the drone. Finally, refer to the following table to control the drone:
 
 .. list-table:: Movements
    :widths: 25 25

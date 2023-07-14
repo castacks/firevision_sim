@@ -14,6 +14,8 @@ Once the project is downloaded, remember to build the project. The following are
     - Inside the file, look at the top and click on "Build and Build Solution". If no compiling errors occur, you are ready to open the FIReVision uproject. It can also be opened inside of the Unreal Engine application.
 Then, when you're in the project via the editor, go to the top left and click on "File > Open Level" and select "FIReVision (Level)".
 
+Although this is not pertinent to complete this setup, you can download additional binaries to try in AirSim by following the instructions `here <https://microsoft.github.io/AirSim/use_precompiled/>`_.
+
 Debugging and Sanity Checks
 ---------------------
 
