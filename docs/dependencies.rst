@@ -11,6 +11,7 @@ Required
 - OpenCV
 - numpy
 - pynput
+- airsim
 
 
 Optional
