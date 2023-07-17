@@ -1,4 +1,6 @@
+pip == 21.3.1
 numpy == 1.23.5
 pynput == 1.7.6
-airsim == 1.8.1my -
+airsim == 1.8.1
 opencv-python == 4.6.0.66
+opencv-contrib-python == 4.6.0.66
