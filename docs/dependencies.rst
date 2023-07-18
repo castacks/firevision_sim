@@ -6,7 +6,7 @@ Dependencies
 Required
 --------
 
-- Windows 10 (or higher) or Linux Ubuntu 18/20
+- Windows 10 (or higher) or Linux Ubuntu 18/20 (Coming Soon)
 - Python 3.11.4
 - pip 21.3.1
 - opencv-contrib-python 4.6.0.66
