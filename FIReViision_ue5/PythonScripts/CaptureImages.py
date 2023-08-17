@@ -5,10 +5,15 @@ import airsim
 import numpy as np
 import os
 import ParametersClass as pc
+import pandas as pd
 
-dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "\SceneImages")
-def set_params(camera_name, params, TEST_MODE, thermal_mat_inst):
-    if (TEST_MODE == 1):
+
+
+#Should possibly change to a path that we decide?
+# dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "\SceneImages")
+
+def set_params(params, test_mode, thermal_mat_inst):
+    if (test_mode == 1):
         blend_weight = params[0]
         brightness = params[1]
         contrast = params[2]
@@ -42,7 +47,7 @@ def set_params(camera_name, params, TEST_MODE, thermal_mat_inst):
         thermal_mat_inst.set_parameter_value("tree_correction_strength", tree_correction_strength)
         thermal_mat_inst.set_parameter_value("target_tree_heat", target_tree_heat)
         thermal_mat_inst.set_parameter_value("vehicle_heat_multiplier", vehicle_heat_multiplier)
-    elif (TEST_MODE == 2):
+    elif (test_mode == 2):
             blend_weight = params[0]
             brightness = params[1]
             contrast = params[2]
@@ -61,20 +66,28 @@ def set_params(camera_name, params, TEST_MODE, thermal_mat_inst):
             
     return 
     
-def capture_image(camera_name, client, params, TEST_MODE):
+def capture_image(camera_name, client, df, image_index, params, test_mode, dir):
     time.sleep(0.1)
     responses = client.simGetImages([ImageRequest(camera_name, 10, False, False)])
     print('Retrieved image: %d' % len(responses))
     print ("Saving images to %s" % dir)
     #Do the file naming with the -'s based on TEST_MODE
-    filename = os.path.join(dir,"test")
+    filename = pc.test_name(test_mode) + "-" + str(image_index)
+    file_path = dir + "\\" + filename 
     response = responses[0]
+    
     # get numpy array
     img1d = np.fromstring(response.image_data_uint8, dtype=np.uint8)
     # reshape array to 4 channel image array H X W X 4
     img_rgb = img1d.reshape(response.height, response.width, 3)
     # original image is fliped vertically
     img_rgb = np.flipud(img_rgb)
-    # write to png
-    airsim.write_png(os.path.normpath(filename + '.png'), img_rgb)
+
+    # write to png    
+    airsim.write_png(os.path.normpath(file_path + '.png'), img_rgb)
+    
+    #Save row to dataframe
+    row = pc.create_row(test_mode, image_index, params, filename)
+    df = pd.concat([df, row])
+    
     return

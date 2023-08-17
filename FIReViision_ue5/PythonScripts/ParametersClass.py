@@ -1,29 +1,89 @@
 
 import itertools
 import numpy as np
+import pandas as pd
 
 FIRE_TEST = 1
 LIGHTBULB_TEST = 2
 
-def get_cols_from_test(test_mode=FIRE_TEST):
-        if(test_mode == FIRE_TEST):
-            return["blend", "brightness", "contrast", "cold_brightness_multiplier",
-                "cold_power", "hot_brightness_multiplier", "hot_power",
-                "sky_heat", "fire_heat", "ground_heat_correction_strength",
-                "ground_heat_offset","person_heat_multiplier",
-                "target_ground_heat", "tree_correction_strength",
-                "target_tree_heat", "vehicle_heat_multiplier"]
-        elif(test_mode == LIGHTBULB_TEST):
-            return["blend", "brightness", "contrast", "cold_brightness_multiplier",
-                "cold_power", "hot_brightness_multiplier", "hot_power",
-                "sky_heat", "fire_heat", "ground_heat_correction_strength",
-                "ground_heat_offset","person_heat_multiplier",
-                "target_ground_heat", "tree_correction_strength",
-                "target_tree_heat", "vehicle_heat_multiplier",
-                "light_bulb_heat_multiplier"]
-        print("Invalid test mode")
-        return None
+# General Parameter indexes
+BLEND_INDEX = 0
+BRIGHTNESS_INDEX = 1
+CONTRAST_INDEX = 2
+COLD_BRIGHTNESS_MULTIPLIER_INDEX = 3
+COLD_POWER_INDEX = 4
+HOT_BRIGHTNESS_MULTIPLIER_INDEX = 5
+HOT_POWER_INDEX = 6
 
+# Fire test-specific parameter indexes
+SKY_HEAT_INDEX = 7
+FIRE_HEAT_INDEX = 8
+GROUND_HEAT_CORRECTION_STRENGTH_INDEX = 9
+GROUND_HEAT_OFFSET_INDEX = 10
+PERSON_HEAT_MULTIPLIER_INDEX = 11
+TARGET_GROUND_HEAT_INDEX = 12
+TREE_CORRECTION_STRENGTH_INDEX = 13
+TARGET_TREE_HEAT_INDEX = 14
+VEHICLE_HEAT_MULTIPLIER_INDEX = 15
+
+#Lightbulb test-specific parameter indexes
+LIGHT_BULB_HEAT_MULTIPLIER_INDEX = 7
+
+
+def test_name(test_mode):
+    if(test_mode == FIRE_TEST):
+        return "fire_test"
+    if(test_mode == LIGHTBULB_TEST):
+        return "lightbulb_test"
+
+def get_cols_from_test(test_mode=FIRE_TEST):
+    general_cols = ["image_index", "filename", "blend", "brightness", "contrast", "cold_brightness_multiplier",
+                "cold_power", "hot_brightness_multiplier", "hot_power"]
+    if(test_mode == FIRE_TEST):
+        return general_cols + ["sky_heat", "fire_heat", "ground_heat_correction_strength",
+            "ground_heat_offset","person_heat_multiplier",
+            "target_ground_heat", "tree_correction_strength",
+            "target_tree_heat", "vehicle_heat_multiplier"]
+    elif(test_mode == LIGHTBULB_TEST):
+        return general_cols + ["light_bulb_heat_multiplier"]
+    else:
+        print("Invalid test mode")
+    return None
+
+def create_row(test_mode, index, params, filename):
+        row = {}
+        
+        blend = params[BLEND_INDEX]
+        brightness = params[BRIGHTNESS_INDEX]
+        contrast = params[CONTRAST_INDEX]
+        cold_brightness_multiplier = params[COLD_BRIGHTNESS_MULTIPLIER_INDEX]
+        cold_power = params[COLD_POWER_INDEX]
+        hot_brightness_multiplier = params[HOT_BRIGHTNESS_MULTIPLIER_INDEX]
+        hot_power = params[HOT_POWER_INDEX]
+        
+        if(test_mode == FIRE_TEST):
+            sky_heat = params[SKY_HEAT_INDEX]
+            fire_heat = params[FIRE_HEAT_INDEX]
+            ground_heat_correction_strength = params[GROUND_HEAT_CORRECTION_STRENGTH_INDEX]
+            ground_heat_offset = params[GROUND_HEAT_OFFSET_INDEX]
+            person_heat_multiplier = params[PERSON_HEAT_MULTIPLIER_INDEX]
+            target_ground_heat = params[TARGET_GROUND_HEAT_INDEX]
+            tree_correction_strength = params[TREE_CORRECTION_STRENGTH_INDEX]
+            target_tree_heat = params[TARGET_TREE_HEAT_INDEX]
+            vehicle_heat_multiplier = params[VEHICLE_HEAT_MULTIPLIER_INDEX]
+            row = {"image_index": index, "filename": filename, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
+                    "cold_power": cold_power, "hot_brightness_multiplier": hot_brightness_multiplier, "hot_power": hot_power,
+                    "sky_heat": sky_heat, "fire_heat": fire_heat, "ground_heat_correction_strength": ground_heat_correction_strength,
+                    "ground_heat_offset": ground_heat_offset, "person_heat_multiplier": person_heat_multiplier,
+                    "target_ground_heat": target_ground_heat, "tree_correction_strength": tree_correction_strength,
+                    "target_tree_heat": target_tree_heat, "vehicle_heat_multiplier": vehicle_heat_multiplier}
+        elif(test_mode == LIGHTBULB_TEST):
+            light_bulb_heat_multiplier = params[LIGHT_BULB_HEAT_MULTIPLIER_INDEX]
+            row = {"image_index": index, "filename": filename, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
+                    "cold_power": cold_power, "hot_brightness_multiplier": hot_brightness_multiplier, "hot_power": hot_power,
+                    "light_bulb_heat_multiplier": light_bulb_heat_multiplier}
+        return pd.Series(row)
+    
 class Parameters:
     def __init__(self, test_mode=FIRE_TEST,
                     blend_weight_min=30, blend_weight_max=100, blend_weight_step=0.5,
@@ -71,74 +131,37 @@ class Parameters:
         test_mode = self.test_mode
         res = list()
         if(test_mode == FIRE_TEST):
-            res = itertools.product(self.blend_range,
-                                    self.brightness_range,
-                                    self.contrast_range,
-                                    self.cold_brightness_multiplier_range,
-                                    self.cold_power_range,
-                                    self.hot_brightness_multipler_range,
-                                    self.hot_power_range,
-                                    self.sky_heat_range,
-                                    self.fire_heat_range,
-                                    self.ground_heat_correction_strength_range,
-                                    self.ground_heat_offset,
-                                    self.person_heat_multiplier_range,
-                                    self.target_ground_heat_range,
-                                    self.tree_correction_strength_range,
-                                    self.target_tree_heat_range,
-                                    self.vehicle_heat_multiplier_range)
+            res = itertools.product(self.blend_range, # blend weight 1
+                                    self.brightness_range, # brightness 2
+                                    self.contrast_range, # contrast 3
+                                    self.cold_brightness_multiplier_range, # cold brightness multiplier 4
+                                    self.cold_power_range, # cold power 5
+                                    self.hot_brightness_multipler_range, # hot brightness multiplier 6
+                                    self.hot_power_range, # hot power 7
+                                    self.sky_heat_range, # sky heat 8
+                                    self.fire_heat_range, # fire heat 9
+                                    self.ground_heat_correction_strength_range, # ground heat correction strength 10
+                                    self.ground_heat_offset, # ground heat offset 11 
+                                    self.person_heat_multiplier_range, # person heat multiplier 12
+                                    self.target_ground_heat_range, # target ground heat 13
+                                    self.tree_correction_strength_range, # tree correction strength 14
+                                    self.target_tree_heat_range, # target tree heat 15
+                                    self.vehicle_heat_multiplier_range # vehicle heat multiplier 16
+                                    )
         elif(test_mode == LIGHTBULB_TEST):
-            res = itertools.product(self.blend_range,
-                                    self.brightness_range,
-                                    self.contrast_range,
-                                    self.cold_brightness_multiplier_range,
-                                    self.cold_power_range,
-                                    self.hot_brightness_multipler_range,
-                                    self.light_bulb_heat_multiplier_range
+            res = itertools.product(self.blend_range, # blend weight 1
+                                    self.brightness_range, # brightness 2
+                                    self.contrast_range, # contrast 3
+                                    self.cold_brightness_multiplier_range, # cold brightness multiplier 4
+                                    self.cold_power_range, # cold power 5
+                                    self.hot_brightness_multipler_range, # hot brightness multiplier 6
+                                    self.light_bulb_heat_multiplier_range # light bulb heat multiplier 7
                                     # Building heat stuff
                                     )
         #print(f'trying {len(res)} combinations')
         return res
     
-    def get_pandas_row(self, params, index):
-        test_mode = self.test_mode
-        row = dict()
-        if(test_mode == FIRE_TEST):
-            blend = params[0]
-            brightness = params[1]
-            contrast = params[2]
-            cold_brightness_multiplier = params[3]
-            cold_power = params[4]
-            hot_brightness_multiplier = params[5]
-            hot_power = params[6]
-            sky_heat = params[7]
-            fire_heat = params[8]
-            ground_heat_correction_strength = params[9]
-            ground_heat_offset = params[10]
-            person_heat_multiplier = params[11]
-            target_ground_heat = params[12]
-            tree_correction_strength = params[13]
-            target_tree_heat = params[14]
-            vehicle_heat_multiplier = params[15]
-            row = {"index": index, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
-                    "cold_power": cold_power, "hot_brightness_multiplier": hot_brightness_multiplier, "hot_power": hot_power,
-                    "sky_heat": sky_heat, "fire_heat": fire_heat, "ground_heat_correction_strength": ground_heat_correction_strength,
-                    "ground_heat_offset": ground_heat_offset, "person_heat_multiplier": person_heat_multiplier,
-                    "target_ground_heat": target_ground_heat, "tree_correction_strength": tree_correction_strength,
-                    "target_tree_heat": target_tree_heat, "vehicle_heat_multiplier": vehicle_heat_multiplier}
-        elif(test_mode == LIGHTBULB_TEST):
-            blend = params[0]
-            brightness = params[1]
-            contrast = params[2]
-            cold_brightness_multiplier = params[3]
-            cold_power = params[4]
-            hot_brightness_multiplier = params[5]
-            hot_power = params[6]
-            light_bulb_heat_multiplier = params[7]
-            row = {"index": index, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
-                    "cold_power": cold_power, "hot_brightness_multiplier": hot_brightness_multiplier, "hot_power": hot_power,
-                    "light_bulb_heat_multiplier": light_bulb_heat_multiplier}
-        return row
+    
     
 
     def get_test_cols(self):
