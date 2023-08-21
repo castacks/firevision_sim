@@ -1,5 +1,10 @@
+import math 
+from cgi import test
 import pandas as pd
 import ParametersClass as pc
+from skimage.metrics import structural_similarity
+from skimage.transform import resize
+import cv2
 import os
 
 #Directory of test results folder
@@ -19,25 +24,38 @@ def path_from_index(df, index):
     return df.loc[df['image_index'] == index]
 
 def image_from_file(file):
-    #TODO
-    pass
+    #Extract image from file
+    return cv2.imread(filepath)
+
+#Peak Signal-to-Noise Ratio function taken from https://www.geeksforgeeks.org/python-peak-signal-to-noise-ratio-psnr/
+def PSNR(test_image, reference_image):
+    mse = np.mean((test_image - reference_image) ** 2)
+    #If no noise, then it's perfect?
+    if (mse == 0): 
+        return 100 
+    #The max value for a pixel is 255 
+    max_pixel = 255
+    psnr = 20 * math.log10(max_pixel/math.sqrt(mse))
+    return mse
 
 def check_accuracy(test_image, reference_image):
-    #TODO
-    pass
+    #Resize in case different dimensions 
+    if ((reference_image.shape[0] != test_image[0]) or (reference_image[1] != test_image[1])):
+        test_image = resize(test_image,(reference_image[0],reference_image[1]), anti_aliasing=True, preserve_range=True)
+    return structural_similarity(test_image,reference_image)
 
 def process_data(test_results_path, reference_imagepath, output_path, test_mode):
     data_df = pd.read_csv(test_results_path + "\\" + pc.test_name(test_mode) + "raw_data.xlsx")
-    results_df = pd.DataFrame(columns=['accuracy', 'image_index'])
+    results_df = pd.DataFrame(columns=['accuracy', 'PSNR', 'image_index'])
     
-    #TODO: Get reference image
     reference_image = image_from_file(reference_imagepath + 'reference.png')
     
     for i in data_df.image_index:
         filepath = path_from_index(data_df, i) #gets file path
         image = image_from_file(filepath) #gets image from file path
         accuracy = check_accuracy(image, reference_image) #gets accuracy
-        row = pd.Series({"accuracy": accuracy, "image_index": i}) #creates row
+        psnr = PSNR(image,reference_image) #gets PSNR
+        row = pd.Series({"accuracy": accuracy, "PSNR":psnr, "image_index": i}) #creates row
         
         pd.concat([results_df, row], ignore_index=True, in_place=True) #concats row to results_df
 
