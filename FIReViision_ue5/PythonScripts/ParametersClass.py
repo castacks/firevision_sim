@@ -37,7 +37,7 @@ def test_name(test_mode):
         return "lightbulb_test"
 
 def get_cols_from_test(test_mode=FIRE_TEST):
-    general_cols = ["image_index", "filename", "blend", "brightness", "contrast", "cold_brightness_multiplier",
+    general_cols = ["image_index", "accuracy", "filename", "blend", "brightness", "contrast", "cold_brightness_multiplier",
                 "cold_power", "hot_brightness_multiplier", "hot_power"]
     if(test_mode == FIRE_TEST):
         return general_cols + ["sky_heat", "fire_heat", "ground_heat_correction_strength",
@@ -50,7 +50,7 @@ def get_cols_from_test(test_mode=FIRE_TEST):
         print("Invalid test mode")
     return None
 
-def create_row(test_mode, index, params, filename):
+def create_row(test_mode, index, accuracy, params, filename):
         row = {}
         
         blend = params[BLEND_INDEX]
@@ -71,7 +71,7 @@ def create_row(test_mode, index, params, filename):
             tree_correction_strength = params[TREE_CORRECTION_STRENGTH_INDEX]
             target_tree_heat = params[TARGET_TREE_HEAT_INDEX]
             vehicle_heat_multiplier = params[VEHICLE_HEAT_MULTIPLIER_INDEX]
-            row = {"image_index": index, "filename": filename, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
+            row = {"image_index": index, "accuracy": accuracy, "filename": filename, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
                     "cold_power": cold_power, "hot_brightness_multiplier": hot_brightness_multiplier, "hot_power": hot_power,
                     "sky_heat": sky_heat, "fire_heat": fire_heat, "ground_heat_correction_strength": ground_heat_correction_strength,
                     "ground_heat_offset": ground_heat_offset, "person_heat_multiplier": person_heat_multiplier,
@@ -79,7 +79,7 @@ def create_row(test_mode, index, params, filename):
                     "target_tree_heat": target_tree_heat, "vehicle_heat_multiplier": vehicle_heat_multiplier}
         elif(test_mode == LIGHTBULB_TEST):
             light_bulb_heat_multiplier = params[LIGHT_BULB_HEAT_MULTIPLIER_INDEX]
-            row = {"image_index": index, "filename": filename, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
+            row = {"image_index": index, "accuracy": accuracy, "filename": filename, "blend": blend, "brightness": brightness, "contrast": contrast, "cold_brightness_multiplier": cold_brightness_multiplier,
                     "cold_power": cold_power, "hot_brightness_multiplier": hot_brightness_multiplier, "hot_power": hot_power,
                     "light_bulb_heat_multiplier": light_bulb_heat_multiplier}
         return pd.Series(row)

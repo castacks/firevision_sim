@@ -6,8 +6,10 @@ import numpy as np
 import os
 import ParametersClass as pc
 import pandas as pd
+import ImageComparisonProcessor as icp
 
 
+SAMPLING_RATE = 20
 
 #Should possibly change to a path that we decide?
 # dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "\SceneImages")
@@ -66,7 +68,7 @@ def set_params(params, test_mode, thermal_mat_inst):
             
     return 
     
-def capture_image(camera_name, client, df, image_index, params, test_mode, dir):
+def capture_image(camera_name, client, best_accuracies, reference_image, df, image_index, params, test_mode, dir):
     time.sleep(0.1)
     responses = client.simGetImages([ImageRequest(camera_name, 10, False, False)])
     print('Retrieved image: %d' % len(responses))
@@ -83,11 +85,21 @@ def capture_image(camera_name, client, df, image_index, params, test_mode, dir):
     # original image is fliped vertically
     img_rgb = np.flipud(img_rgb)
 
+
+    min_acc = np.min(best_accuracies.keys)
+    current_acc = icp.check_accuracy(img_rgb, reference_image)
+    if (current_acc > min_acc):
+        del best_accuracies[min_acc]
+        best_accuracies[current_acc] = [image_index, img_rgb]
+
+
     # write to png    
-    airsim.write_png(os.path.normpath(file_path + '.png'), img_rgb)
+    if (image_index%SAMPLING_RATE == 0):
+        airsim.write_png(os.path.normpath(file_path + '.png'), img_rgb)     
+    
     
     #Save row to dataframe
-    row = pc.create_row(test_mode, image_index, params, filename)
+    row = pc.create_row(test_mode, image_index, current_acc, params, filename)
     df = pd.concat([df, row])
     
     return

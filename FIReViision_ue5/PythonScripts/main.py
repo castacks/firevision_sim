@@ -4,12 +4,12 @@ import ParametersClass as pc
 import CaptureImages as ci
 import pandas as pd
 import os
-
+import ImageComparisonProcessor as icp
 
 TEST_MODE = 1
 RESULTS_FILE_PATH = ""
 CAMERA_NAME = "bottom_forward_thermal"
-
+REFERNCE_IMAGE_PATH = ""
 
 # connect to the AirSim simulator
 client = airsim.MultirotorClient()
@@ -39,13 +39,20 @@ thermal_mat_inst = unreal.EditorAssetLibrary.load_asset("/Game/Thermal_FX/PP_The
 images_dir = os.path.join(RESULTS_FILE_PATH, "images")
 os.mkdir(images_dir)
 
+best_accs = {0 : [0,0]}
+ref_image = icp.image_from_file(REFERNCE_IMAGE_PATH)
 i = 0
 for params in parameter_combinations:
     # Set parameters then capture image
     ci.set_params(params, TEST_MODE, thermal_mat_inst)
     #Captures and saves image name into dataframe
-    ci.capture_image(CAMERA_NAME, client, df, i, params, TEST_MODE, images_dir)
-    
+    ci.capture_image(CAMERA_NAME, client, best_accs, ref_image, df, i, params, TEST_MODE, images_dir)
+
+for acc_key in best_accs:
+    #Save the best images if they don't already exist
+    if(not os.path.exists(os.path.normpath(images_dir + "\\" + str(acc_key) + '.png'))):
+        airsim.write_png(os.path.normpath(images_dir + "\\" + str(acc_key) + '.png'), best_accs[acc_key][1])
+
 #Saves file information to excel file
 df.to_excel(RESULTS_FILE_PATH + "\\" + pc.test_name(TEST_MODE) + "raw_data.xlsx")
 
