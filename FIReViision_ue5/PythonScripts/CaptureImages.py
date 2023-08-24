@@ -14,6 +14,10 @@ SAMPLING_RATE = 20
 #Should possibly change to a path that we decide?
 # dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "\SceneImages")
 
+def test_params(thermal_mat_inst):
+    unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"cold_heat", -2)
+
+
 def set_params(params, test_mode, thermal_mat_inst):
     if (test_mode == 1):
         blend_weight = params[0]
@@ -33,22 +37,22 @@ def set_params(params, test_mode, thermal_mat_inst):
         target_tree_heat = params[14]
         vehicle_heat_multiplier = params[15]
         #Set the parameters
-        thermal_mat_inst.set_parameter_value("blend_weight", blend_weight)
-        thermal_mat_inst.set_parameter_value("Brightness", brightness)
-        thermal_mat_inst.set_parameter_value("Contrast", contrast)
-        thermal_mat_inst.set_parameter_value("cold_brightness_multiplier", cold_brightness_multiplier)
-        thermal_mat_inst.set_parameter_value("cold_power", cold_power)
-        thermal_mat_inst.set_parameter_value("hot_brightness_multiplier", hot_brightness_multiplier)
-        thermal_mat_inst.set_parameter_value("hot_power", hot_power)
-        thermal_mat_inst.set_parameter_value("sky_heat", sky_heat)
-        thermal_mat_inst.set_parameter_value("Fire_Heat", fire_heat)
-        thermal_mat_inst.set_parameter_value("ground_heat_correction_strength", ground_heat_correction_strength)
-        thermal_mat_inst.set_parameter_value("ground_heat_offset", ground_heat_offset)
-        thermal_mat_inst.set_parameter_value("person_heat_multiplier", person_heat_multiplier)
-        thermal_mat_inst.set_parameter_value("target_ground_heat", target_ground_heat)
-        thermal_mat_inst.set_parameter_value("tree_correction_strength", tree_correction_strength)
-        thermal_mat_inst.set_parameter_value("target_tree_heat", target_tree_heat)
-        thermal_mat_inst.set_parameter_value("vehicle_heat_multiplier", vehicle_heat_multiplier)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"blend_weight", blend_weight)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"Brightness", brightness)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"Contrast", contrast)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"cold_brightness_multiplier", cold_brightness_multiplier)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"cold_power", cold_power)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"hot_brightness_multiplier", hot_brightness_multiplier)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"hot_power", hot_power)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"sky_heat", sky_heat)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"Fire_Heat", fire_heat)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"ground_heat_correction_strength", ground_heat_correction_strength)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"ground_heat_offset", ground_heat_offset)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"person_heat_multiplier", person_heat_multiplier)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"target_ground_heat", target_ground_heat)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"tree_correction_strength", tree_correction_strength)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"target_tree_heat", target_tree_heat)
+        unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"vehicle_heat_multiplier", vehicle_heat_multiplier)
     elif (test_mode == 2):
             blend_weight = params[0]
             brightness = params[1]
@@ -58,12 +62,12 @@ def set_params(params, test_mode, thermal_mat_inst):
             hot_brightness_multiplier = params[5]
             light_bulb_heat_multiplier = params[6]
             #Set the parameters
-            thermal_mat_inst.set_parameter_value("blend_weight", blend_weight)
-            thermal_mat_inst.set_parameter_value("Brightness", brightness)
-            thermal_mat_inst.set_parameter_value("Contrast", contrast)
-            thermal_mat_inst.set_parameter_value("cold_brightness_multiplier", cold_brightness_multiplier)
-            thermal_mat_inst.set_parameter_value("cold_power", cold_power)
-            thermal_mat_inst.set_parameter_value("hot_brightness_multiplier", hot_brightness_multiplier)
+            unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"blend_weight", blend_weight)
+            unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"Brightness", brightness)
+            unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"Contrast", contrast)
+            unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"cold_brightness_multiplier", cold_brightness_multiplier)
+            unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"cold_power", cold_power)
+            unreal.MaterialEditingLibrary.set_material_instance_scalar_parameter_value(thermal_mat_inst,"hot_brightness_multiplier", hot_brightness_multiplier)
             #Unsure about the light bulb multiplier
             
     return 

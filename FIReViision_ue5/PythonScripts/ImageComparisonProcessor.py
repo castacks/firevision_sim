@@ -6,6 +6,7 @@ from skimage.metrics import structural_similarity
 from skimage.transform import resize
 import cv2
 import os
+import numpy as np
 
 #Directory of test results folder
 TEST_RESULTS_PATH = ""
@@ -20,12 +21,13 @@ OUTPUT_PATH = 'output/'
 TEST_MODE = 1
 TEST_NAME = pc.test_name(TEST_MODE)
 
+
 def path_from_index(df, index):
     return df.loc[df['image_index'] == index]
 
 def image_from_file(file):
     #Extract image from file
-    return cv2.imread(filepath)
+    return cv2.imread(file)
 
 #Peak Signal-to-Noise Ratio function taken from https://www.geeksforgeeks.org/python-peak-signal-to-noise-ratio-psnr/
 def PSNR(test_image, reference_image):
@@ -43,6 +45,7 @@ def check_accuracy(test_image, reference_image):
     if ((reference_image.shape[0] != test_image[0]) or (reference_image[1] != test_image[1])):
         test_image = resize(test_image,(reference_image[0],reference_image[1]), anti_aliasing=True, preserve_range=True)
     return structural_similarity(test_image,reference_image)
+
 
 def process_data(test_results_path, reference_imagepath, output_path, test_mode):
     data_df = pd.read_csv(test_results_path + "\\" + pc.test_name(test_mode) + "raw_data.xlsx")

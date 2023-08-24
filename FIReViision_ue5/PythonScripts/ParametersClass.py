@@ -130,24 +130,56 @@ class Parameters:
     def all_parameter_combinations(self):
         test_mode = self.test_mode
         res = list()
+
         if(test_mode == FIRE_TEST):
-            res = itertools.product(self.blend_range, # blend weight 1
-                                    self.brightness_range, # brightness 2
-                                    self.contrast_range, # contrast 3
-                                    self.cold_brightness_multiplier_range, # cold brightness multiplier 4
-                                    self.cold_power_range, # cold power 5
-                                    self.hot_brightness_multipler_range, # hot brightness multiplier 6
-                                    self.hot_power_range, # hot power 7
-                                    self.sky_heat_range, # sky heat 8
-                                    self.fire_heat_range, # fire heat 9
-                                    self.ground_heat_correction_strength_range, # ground heat correction strength 10
-                                    self.ground_heat_offset, # ground heat offset 11 
-                                    self.person_heat_multiplier_range, # person heat multiplier 12
-                                    self.target_ground_heat_range, # target ground heat 13
-                                    self.tree_correction_strength_range, # tree correction strength 14
-                                    self.target_tree_heat_range, # target tree heat 15
-                                    self.vehicle_heat_multiplier_range # vehicle heat multiplier 16
-                                    )
+            i = 0
+            for blend in self.blend_range:
+                for brightness in self.brightness_range:
+                    for contrast in self.contrast_range: # contrast 3
+                        for cold_brightness_multiplier in self.cold_brightness_multiplier_range: # cold brightness multiplier 4
+                            for cold_power in self.cold_power_range: # cold power 5
+                                for hot_brightness_multiplier in self.hot_brightness_multipler_range:
+                                    for hot_power in self.hot_power_range:
+                                        for sky_heat in self.sky_heat_range:
+                                            for fire_heat in self.fire_heat_range:
+                                                for ground_heat_correction_strength in self.ground_heat_correction_strength_range:
+                                                    for ground_heat_offset in self.ground_heat_offset:
+                                                        for person_heat_multiplier in self.person_heat_multiplier_range:
+                                                            for target_ground_heat in self.target_ground_heat_range:
+                                                                for tree_correction_strength in self.tree_correction_strength_range:
+                                                                    for target_tree_heat in self.target_tree_heat_range:
+                                                                        for vehicle_heat_multiplier in self.vehicle_heat_multiplier_range:
+                                                                            res.append([blend, brightness, contrast, cold_brightness_multiplier,
+                                                                                        cold_power, hot_brightness_multiplier, hot_power,
+                                                                                        sky_heat, fire_heat, ground_heat_correction_strength,
+                                                                                        ground_heat_offset, person_heat_multiplier,
+                                                                                        target_ground_heat, tree_correction_strength,
+                                                                                        target_tree_heat, vehicle_heat_multiplier])
+                                                                            # print (i, [blend, brightness, contrast, cold_brightness_multiplier,
+                                                                            #             cold_power, hot_brightness_multiplier, hot_power,
+                                                                            #             sky_heat, fire_heat, ground_heat_correction_strength,
+                                                                            #             ground_heat_offset, person_heat_multiplier,
+                                                                            #             target_ground_heat, tree_correction_strength,
+                                                                            #             target_tree_heat, vehicle_heat_multiplier])
+                                                                            i += 1
+            
+            # res = itertools.product(self.blend_range, # blend weight 1
+            #                         self.brightness_range, # brightness 2
+            #                         self.contrast_range, # contrast 3
+            #                         self.cold_brightness_multiplier_range, # cold brightness multiplier 4
+            #                         self.cold_power_range, # cold power 5
+            #                         self.hot_brightness_multipler_range, # hot brightness multiplier 6
+            #                         self.hot_power_range, # hot power 7
+            #                         self.sky_heat_range, # sky heat 8
+            #                         self.fire_heat_range, # fire heat 9
+            #                         self.ground_heat_correction_strength_range, # ground heat correction strength 10
+            #                         self.ground_heat_offset, # ground heat offset 11 
+            #                         self.person_heat_multiplier_range, # person heat multiplier 12
+            #                         self.target_ground_heat_range, # target ground heat 13
+            #                         self.tree_correction_strength_range, # tree correction strength 14
+            #                         self.target_tree_heat_range, # target tree heat 15
+            #                         self.vehicle_heat_multiplier_range # vehicle heat multiplier 16
+            #                         )
         elif(test_mode == LIGHTBULB_TEST):
             res = itertools.product(self.blend_range, # blend weight 1
                                     self.brightness_range, # brightness 2
@@ -158,8 +190,9 @@ class Parameters:
                                     self.light_bulb_heat_multiplier_range # light bulb heat multiplier 7
                                     # Building heat stuff
                                     )
+            i = 0
         #print(f'trying {len(res)} combinations')
-        return res
+        return i, res
     
     
     
