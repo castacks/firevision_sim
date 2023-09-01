@@ -12,22 +12,6 @@ from multiprocessing import Process
 TEST_MODE = 2
 # SEARCH_MODE = "HIGH_FIDELITY"
 SEARCH_MODE = "LOW_FIDELITY"
-
-class capture(object):
-  def __init__(self, filename):
-    unreal.EditorLevelLibrary.editor_set_game_view(True)    
-    self.filename = filename
-    self.on_pre_tick = unreal.register_slate_pre_tick_callback(self.__pretick__)
-    
-  def __pretick__(self, deltatime):
-    try:
-      unreal.AutomationLibrary.take_high_res_screenshot(1920,1080, filename + ".png")
-    except Exception as error:
-      unreal.unregister_slate_pre_tick_callback(self.on_pre_tick)
-
-def delay(time):
-    time.sleep(time)
-    
     
 RESULTS_FILE_PATH = r"c:\Users\John\Downloads\test_images"
 CAMERA_NAME = "bottom_forward_thermal"
@@ -74,16 +58,16 @@ if(TEST_MODE==1):
         contrast_step=5
         
         cold_brightness_multiplier_min=0
-        cold_brightness_multipler_max=200
+        cold_brightness_multiplier_max=200
         cold_brightness_multiplier_step=10
         
         cold_power_min=-2
         cold_power_max=2
         cold_power_step=0.2
         
-        hot_brightness_multipler_min=0
-        hot_brightness_multipler_max=200
-        hot_brightness_multipler_step=10
+        hot_brightness_multiplier_min=0
+        hot_brightness_multiplier_max=200
+        hot_brightness_multiplier_step=10
         
         hot_power_min=-2
         hot_power_max=2
@@ -141,16 +125,16 @@ if(TEST_MODE==1):
         contrast_step=1
         
         cold_brightness_multiplier_min=0
-        cold_brightness_multipler_max=200
+        cold_brightness_multiplier_max=200
         cold_brightness_multiplier_step=1
         
         cold_power_min=-2
         cold_power_max=2
         cold_power_step=0.1         
         
-        hot_brightness_multipler_min=0
-        hot_brightness_multipler_max=10
-        hot_brightness_multipler_step=0.2
+        hot_brightness_multiplier_min=0
+        hot_brightness_multiplier_max=10
+        hot_brightness_multiplier_step=0.2
         
         hot_power_min=-2
         hot_power_max=2
@@ -197,9 +181,9 @@ if(TEST_MODE==1):
     blend_range = np.arange(blend_weight_min, blend_weight_max, blend_weight_step)
     brightness_range = np.arange(brightness_min, brightness_max, brightness_step)
     contrast_range = np.arange(contrast_min, contrast_max, contrast_step)
-    cold_brightness_multiplier_range = np.arange(cold_brightness_multiplier_min, cold_brightness_multipler_max, cold_brightness_multiplier_step)
+    cold_brightness_multiplier_range = np.arange(cold_brightness_multiplier_min, cold_brightness_multiplier_max, cold_brightness_multiplier_step)
     cold_power_range = np.arange(cold_power_min, cold_power_max, cold_power_step)
-    hot_brightness_multipler_range = np.arange(hot_brightness_multipler_min, hot_brightness_multipler_max, hot_brightness_multipler_step)
+    hot_brightness_multiplier_range = np.arange(hot_brightness_multiplier_min, hot_brightness_multiplier_max, hot_brightness_multiplier_step)
     hot_power_range = np.arange(hot_power_min, hot_power_max, hot_power_step)
     sky_heat_range = np.arange(sky_heat_min, sky_heat_max, sky_heat_step)
     fire_heat_range = np.arange(fire_heat_min, fire_heat_max, fire_heat_step)
@@ -215,7 +199,7 @@ if(TEST_MODE==1):
             for contrast in contrast_range: # contrast 3
                 for cold_brightness_multiplier in cold_brightness_multiplier_range: # cold brightness multiplier 4
                     for cold_power in cold_power_range: # cold power 5
-                        for hot_brightness_multiplier in hot_brightness_multipler_range:
+                        for hot_brightness_multiplier in hot_brightness_multiplier_range:
                             for hot_power in hot_power_range:
                                 for sky_heat in sky_heat_range:
                                     for fire_heat in fire_heat_range:
@@ -269,16 +253,16 @@ elif(TEST_MODE==2):
         contrast_step=5
         
         cold_brightness_multiplier_min=0
-        cold_brightness_multipler_max=200
+        cold_brightness_multiplier_max=200
         cold_brightness_multiplier_step=10
         
         cold_power_min=-2
         cold_power_max=2
         cold_power_step=0.2
         
-        hot_brightness_multipler_min=0
-        hot_brightness_multipler_max=200
-        hot_brightness_multipler_step=10
+        hot_brightness_multiplier_min=0
+        hot_brightness_multiplier_max=200
+        hot_brightness_multiplier_step=10
         
         hot_power_min=-2
         hot_power_max=2
@@ -302,16 +286,16 @@ elif(TEST_MODE==2):
         contrast_step=1
         
         cold_brightness_multiplier_min=0
-        cold_brightness_multipler_max=200
+        cold_brightness_multiplier_max=200
         cold_brightness_multiplier_step=1
         
         cold_power_min=-2
         cold_power_max=2
         cold_power_step=0.1         
         
-        hot_brightness_multipler_min=0
-        hot_brightness_multipler_max=10
-        hot_brightness_multipler_step=0.2
+        hot_brightness_multiplier_min=0
+        hot_brightness_multiplier_max=10
+        hot_brightness_multiplier_step=0.2
         
         hot_power_min=-2
         hot_power_max=2
@@ -324,9 +308,9 @@ elif(TEST_MODE==2):
     blend_range = np.arange(blend_weight_min, blend_weight_max, blend_weight_step)
     brightness_range = np.arange(brightness_min, brightness_max, brightness_step)
     contrast_range = np.arange(contrast_min, contrast_max, contrast_step)
-    cold_brightness_multiplier_range = np.arange(cold_brightness_multiplier_min, cold_brightness_multipler_max, cold_brightness_multiplier_step)
+    cold_brightness_multiplier_range = np.arange(cold_brightness_multiplier_min, cold_brightness_multiplier_max, cold_brightness_multiplier_step)
     cold_power_range = np.arange(cold_power_min, cold_power_max, cold_power_step)
-    hot_brightness_multipler_range = np.arange(hot_brightness_multipler_min, hot_brightness_multipler_max, hot_brightness_multipler_step)
+    hot_brightness_multiplier_range = np.arange(hot_brightness_multiplier_min, hot_brightness_multiplier_max, hot_brightness_multiplier_step)
     hot_power_range = np.arange(hot_power_min, hot_power_max, hot_power_step)
     light_bulb_heat_multiplier_range = np.arange(light_bulb_heat_multiplier_min, light_bulb_heat_multiplier_max, light_bulb_heat_multiplier_step)
 
@@ -335,7 +319,7 @@ elif(TEST_MODE==2):
             for contrast in contrast_range: # contrast 3
                 for cold_brightness_multiplier in cold_brightness_multiplier_range: # cold brightness multiplier 4
                     for cold_power in cold_power_range: # cold power 5
-                        for hot_brightness_multiplier in hot_brightness_multipler_range:
+                        for hot_brightness_multiplier in hot_brightness_multiplier_range:
                             for hot_power in hot_power_range:
                                 for light_bulb_heat_multiplier in light_bulb_heat_multiplier_range:
                                     #Strings together filename
@@ -362,7 +346,10 @@ elif(TEST_MODE==2):
                                     
                                     #Take Screen Shot
                                     i += 1
+                                    print("Line 365")
                                     unreal.AutomationLibrary.take_high_res_screenshot(1920, 1080, filename, camera = camera_actor)
+                                    print("Line 366")
+                                    # import code; code.interact(local=dict(globals(), **locals()))
                                     
                                     # print(i)
                                     #Just take 2 for testing
