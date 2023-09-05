@@ -42,8 +42,9 @@ def PSNR(test_image, reference_image):
 
 def check_accuracy(test_image, reference_image):
     #Resize in case different dimensions 
-    if ((reference_image.shape[0] != test_image[0]) or (reference_image[1] != test_image[1])):
-        test_image = resize(test_image,(reference_image[0],reference_image[1]), anti_aliasing=True, preserve_range=True)
+    if ((reference_image.shape[0] != test_image.shape[0]) or (reference_image.shape[1] != test_image.shape[1])):
+        test_image = resize(test_image,(reference_image.shape[0],reference_image.shape[1]), anti_aliasing=True, preserve_range=True)
+        # test_image = resize(test_image,(reference_image[0],reference_image[1]), anti_aliasing=True, preserve_range=True)
     return structural_similarity(test_image,reference_image)
 
 
