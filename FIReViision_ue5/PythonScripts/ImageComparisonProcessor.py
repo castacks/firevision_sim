@@ -44,7 +44,7 @@ def check_accuracy(test_image, reference_image):
     #Resize in case different dimensions 
     if (test_image.shape[0] != reference_image.shape[0]) or (test_image.shape[1] != reference_image.shape[1]):
         test_image = resize(test_image, (reference_image.shape[0], reference_image.shape[1]), anti_aliasing=True, preserve_range=True)  
-    return structural_similarity(test_image, reference_image, channel_axis=2, multichannel=True, data_range=1)
+    return structural_similarity(test_image, reference_image, channel_axis=2, multichannel=True, data_range=255)
 
 
 def process_data(test_results_path, reference_imagepath, output_path, test_mode):
