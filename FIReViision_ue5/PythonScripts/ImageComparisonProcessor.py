@@ -11,7 +11,6 @@ import lpips
 
 #Initialize model
 loss_fn_alex = lpips.LPIPS(net='alex') # best forward scores
-loss_fn_vgg = lpips.LPIPS(net='vgg') # closer to "traditional" perceptual loss, when used for optimization
 
 #Directory of test results folder
 TEST_RESULTS_PATH = ""
@@ -55,7 +54,10 @@ def perceptualSimilarity(reference_image, test_image):
     #Resize in case different dimensions 
     if (test_image.shape[0] != reference_image.shape[0]) or (test_image.shape[1] != reference_image.shape[1]):
         test_image = resize(test_image, (reference_image.shape[0], reference_image.shape[1]), anti_aliasing=True, preserve_range=True) 
-    return loss_fn_alex(reference_image,test_image)
+    reference_image = lpips.im2tensor(reference_image)
+    test_image = lpips.im2tensor(test_image)
+    dist = loss_fn_alex(reference_image,test_image)
+    return dist.item()
     
 def process_data(test_results_path, reference_imagepath, output_path, test_mode):
     data_df = pd.read_csv(test_results_path + "\\" + pc.test_name(test_mode) + "raw_data.xlsx")
