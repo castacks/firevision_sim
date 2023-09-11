@@ -7,6 +7,11 @@ from skimage.transform import resize
 import cv2
 import os
 import numpy as np
+import lpips
+
+#Initialize model
+loss_fn_alex = lpips.LPIPS(net='alex') # best forward scores
+loss_fn_vgg = lpips.LPIPS(net='vgg') # closer to "traditional" perceptual loss, when used for optimization
 
 #Directory of test results folder
 TEST_RESULTS_PATH = ""
@@ -46,7 +51,12 @@ def check_accuracy(test_image, reference_image):
         test_image = resize(test_image, (reference_image.shape[0], reference_image.shape[1]), anti_aliasing=True, preserve_range=True)  
     return structural_similarity(test_image, reference_image, channel_axis=2, multichannel=True, data_range=255)
 
-
+def perceptualSimilarity(reference_image, test_image):
+    #Resize in case different dimensions 
+    if (test_image.shape[0] != reference_image.shape[0]) or (test_image.shape[1] != reference_image.shape[1]):
+        test_image = resize(test_image, (reference_image.shape[0], reference_image.shape[1]), anti_aliasing=True, preserve_range=True) 
+    return loss_fn_alex(reference_image,test_image)
+    
 def process_data(test_results_path, reference_imagepath, output_path, test_mode):
     data_df = pd.read_csv(test_results_path + "\\" + pc.test_name(test_mode) + "raw_data.xlsx")
     results_df = pd.DataFrame(columns=['accuracy', 'PSNR', 'image_index'])
