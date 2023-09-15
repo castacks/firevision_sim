@@ -1,4 +1,6 @@
-# Tested using Unreal 5.3 Preview on Mac
+# This python script is meant to be called in the Unreal Engine Python terminal.
+# This file reads the parameters from a specified directory, changes the current
+# environment's materials, and takes a screenshot of the current environment.
 
 from datetime import datetime
 import os

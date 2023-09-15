@@ -1,3 +1,8 @@
+# This python script is meant to be called in the Unreal Engine Python terminal.
+# This file reads the parameters from a specified directory, and changes the current
+# environment's materials, THIS SCRIPT DOES NOT TAKE AN IMAGE.
+
+
 from datetime import datetime
 import os
 from pathlib import Path

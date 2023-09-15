@@ -1,4 +1,13 @@
 from datetime import datetime
+#
+# This file runs on an infinite loop and waits until the 
+# mutex file is created which "gives it permission" to 
+# take and image using pyautogui to manually press "f9" 
+# to take an image in the unreal editor
+#
+#
+
+
 import os
 from pathlib import Path
 import platform

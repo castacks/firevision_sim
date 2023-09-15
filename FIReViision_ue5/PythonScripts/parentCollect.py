@@ -29,20 +29,24 @@ MUTEX_DIR = r"C:\Users\John\Downloads\temp_params\mutex_unlock.txt"
 image_index = 0
 
 def black_box_function_lightbulb(blend_weight, brightness, contrast, cold_brightness_multiplier, cold_power, hot_brightness_multiplier, hot_power, light_bulb_heat_multiplier, lamp_heat_multiplier):
-    if(os.path.exists(PRIOR_RESULTS_DIR)):
-        prior_results = pd.read_csv(PRIOR_RESULTS_DIR)
-        result_row = prior_results.loc[
-            prior_results["blend_weight"] == blend_weight and 
-            prior_results["brightness"] == brightness and 
-            prior_results["contrast"] == contrast and 
-            prior_results["cold_brightness_multiplier"] == cold_brightness_multiplier and 
-            prior_results["cold_power"] == cold_power and 
-            prior_results["hot_brightness_multiplier"] == hot_brightness_multiplier and 
-            prior_results["hot_power"] == hot_power and 
-            prior_results["light_bulb_heat_multiplier"] == light_bulb_heat_multiplier and 
-            prior_results["lamp_heat_multiplier"] == lamp_heat_multiplier].target != 0
-        if(result_row != None and result_row.target != 0):
-            return result_row.target
+    #Experimental stuff. Looking for prior results to tune by batches.
+    # if(os.path.exists(PRIOR_RESULTS_DIR)):
+    #     prior_results = pd.read_csv(PRIOR_RESULTS_DIR)
+    #     result_row = prior_results.loc[
+    #         prior_results["blend_weight"] == blend_weight and 
+    #         prior_results["brightness"] == brightness and 
+    #         prior_results["contrast"] == contrast and 
+    #         prior_results["cold_brightness_multiplier"] == cold_brightness_multiplier and 
+    #         prior_results["cold_power"] == cold_power and 
+    #         prior_results["hot_brightness_multiplier"] == hot_brightness_multiplier and 
+    #         prior_results["hot_power"] == hot_power and 
+    #         prior_results["light_bulb_heat_multiplier"] == light_bulb_heat_multiplier and 
+    #         prior_results["lamp_heat_multiplier"] == lamp_heat_multiplier].target != 0
+    #     if(result_row != None and result_row.target != 0):
+    #         return result_row.target
+    
+    
+    #Creates Pandas row as a dictionary
     row ={
         "index" : "0",
         "blend_weight" :blend_weight,
@@ -55,29 +59,32 @@ def black_box_function_lightbulb(blend_weight, brightness, contrast, cold_bright
         "light_bulb_heat_multiplier" : light_bulb_heat_multiplier,
         "lamp_heat_multiplier" : lamp_heat_multiplier
         }
-    # print(row)
     
     
     params = pd.DataFrame(row, index=[0])
     
-    #Write Params to file
+    #Write Params to file for the screenshot script to read later
     params.to_csv(TMP_PARAMS_DIR)
     while(not os.path.exists(TMP_PARAMS_DIR)):
         time.sleep(0.1)
-        
-        
-    #Mutes all scene symbols
+    
+    
+    ##### IMAGE TAKING PROCESS #####
+    #Mutes all scene symbols (makes environment look prettier)
     pygui.click(x=1131,y=515)
     pygui.press('g')
     
-    #Generate Image
+    #Click the unreal terminal and run the script to read params and take the image
     pygui.click(x=433, y=1138)
     pygui.write("TakeSingleImage.py")
     pygui.press('enter')
     
+    
     #Wait for image to be generated
     while(not os.path.exists(LIGHTBULB_IMAGE_DIR)):
         time.sleep(0.1)
+    
+    ##### FINISHED TAKING IMAGE #####
     
     try:
         #Compare Image
@@ -93,6 +100,7 @@ def black_box_function_lightbulb(blend_weight, brightness, contrast, cold_bright
             accuracy = 1
         else:
             accuracy = 0 
+    
     #Cleanup
     os.remove(TMP_PARAMS_DIR)
     os.remove(LIGHTBULB_IMAGE_DIR)
@@ -123,14 +131,17 @@ def black_box_function_single_fire(blend_weight, brightness, contrast, cold_brig
     while(not os.path.exists(TMP_PARAMS_DIR)):
         time.sleep(0.1)
         
+    ##### IMAGE TAKING PROCESS #####
     
+    #Changes parameters based on the parameter files created (in a similar fashion to the lightbulb test)
     #Generate Image
     pygui.click(x=433, y=1138)
     pygui.write("ChangeParams.py")
     pygui.press('enter')
     
-    # path = r"c:\Users\John\Wildfire_Development\FIReVision2_0_0\Saved\Screenshots\WindowsEditor"
-
+    ##### FINISHED TAKING IMAGE #####
+    
+    #Waits while the image does not exist or the mutex file does exist
     while(os.path.exists(MUTEX_DIR) or not os.path.exists(FIRE_IMAGE_DIR)):
         time.sleep(0.1)
                 
@@ -153,9 +164,8 @@ def black_box_function_single_fire(blend_weight, brightness, contrast, cold_brig
             accuracy = 1
         else:
             accuracy = 0
-    #Cleanup
     
-        
+    #Cleans up temp files    
     os.remove(TMP_PARAMS_DIR)
     
     for f in os.listdir(IMAGE_FOLDER):
