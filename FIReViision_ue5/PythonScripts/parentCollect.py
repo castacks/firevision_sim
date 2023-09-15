@@ -13,6 +13,9 @@ import cv2
 TEST_MODE = "single_fire_test"
 # TEST_MODE = "lightbulb_test"
 
+PERCEPTUAL = True
+# PERCEPTUAL = False
+
 PRIOR_RESULTS_DIR = r"c:\Users\John\Downloads\temp_params\results.csv"
 
 LIGHTBULB_IMAGE_DIR = r"C:\Users\John\Wildfire_Development\FIReVision2_0_0\Saved\Screenshots\WindowsEditor\current.png"
@@ -52,7 +55,7 @@ def black_box_function_lightbulb(blend_weight, brightness, contrast, cold_bright
         "light_bulb_heat_multiplier" : light_bulb_heat_multiplier,
         "lamp_heat_multiplier" : lamp_heat_multiplier
         }
-    print(row)
+    # print(row)
     
     
     params = pd.DataFrame(row, index=[0])
@@ -80,9 +83,16 @@ def black_box_function_lightbulb(blend_weight, brightness, contrast, cold_bright
         #Compare Image
         image = icp.image_from_file(LIGHTBULB_IMAGE_DIR)
         reference_image = icp.image_from_file(REF_LIGHTBULB_DIR)
-        accuracy = icp.check_accuracy(image, reference_image) #gets accuracyg
+        # accuracy = icp.check_accuracy(image, reference_image) #gets accuracy
+        if(PERCEPTUAL):
+            accuracy = 1 - icp.perceptualSimilarity(reference_image, image)
+        else:
+            accuracy = icp.check_accuracy(image, reference_image)
     except:
-        accuracy = 0    
+        if(PERCEPTUAL):
+            accuracy = 1
+        else:
+            accuracy = 0 
     #Cleanup
     os.remove(TMP_PARAMS_DIR)
     os.remove(LIGHTBULB_IMAGE_DIR)
@@ -131,10 +141,18 @@ def black_box_function_single_fire(blend_weight, brightness, contrast, cold_brig
         image = image[y:y+h, x:x+w]
         
         reference_image = icp.image_from_file(REF_SINGLE_FIRE_IMAGE)
-        accuracy = icp.check_accuracy(image, reference_image) #gets accuracy
+        if(PERCEPTUAL):
+            accuracy = 1 - icp.perceptualSimilarity(reference_image, image)
+        else:
+            accuracy = icp.check_accuracy(image, reference_image)
+
+        # accuracy = icp.check_accuracy(image, reference_image) #gets accuracy
     except:
         print("error")
-        accuracy = 0
+        if(PERCEPTUAL):
+            accuracy = 1
+        else:
+            accuracy = 0
     #Cleanup
     
         
@@ -143,6 +161,7 @@ def black_box_function_single_fire(blend_weight, brightness, contrast, cold_brig
     for f in os.listdir(IMAGE_FOLDER):
         if(isinstance(f, str) and os.path.exists(os.path.join(IMAGE_FOLDER, f))):
             os.remove(os.path.join(IMAGE_FOLDER, f))
+    print(accuracy)
     return accuracy
 
 
@@ -178,7 +197,7 @@ def main():
                 'cold_power': (0.7, 1.3), 
                 'hot_brightness_multiplier': (0.3, 0.5), 
                 'hot_power': (-0.3, 0.3), 
-                "sky_heat" : (0, 0.1),
+                "sky_heat" : (-0.5, 0.1),
                 "ground_heat_correction" : (0, 1),
                 "tree_correction_strength" : (0, 1)}
 
